@@ -42,7 +42,7 @@ const Pesquisa = () => {
             return;
           }
           const resultadoPesquisa = livros.filter((livro) =>
-            livro.nome.includes(textoDigitado)
+            livro.nome.toLowerCase().includes(evento.target.value.toLowerCase())
           );
           setlivrosPesquisados(resultadoPesquisa);
         }}
