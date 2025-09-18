@@ -1,10 +1,11 @@
 import Header from './componentes/header/header';
 import styled from 'styled-components';
+import Pesquisa from './componentes/Pesquisa/pesquisa';
 
 const AppContainer = styled.div`
   width: 100vw;
   height: 100vh;
-  background-image: linear-gradient(90deg, #002F52 35%, #326589);
+  background: linear-gradient(to right, #3e2723, #795548);
 `;
 
 const AppHeader = styled.header`
@@ -22,6 +23,7 @@ function App() {
       <AppHeader>
         <Header />
       </AppHeader>
+      <Pesquisa/>
     </AppContainer>
   );
 }
