@@ -2,10 +2,9 @@ import React from "react";
 import Input from "../Input/input";
 import styled from "styled-components";
 import { useState } from "react";
-import { livros } from './dadosPesquisa.jsx'
+import { livros } from "./dadosPesquisa.jsx";
 
 const PesquisaContainer = styled.div`
-  
   color: #fff;
   text-align: center;
   padding: 85px 0;
@@ -27,18 +26,50 @@ const Subtitulo = styled.h3`
 `;
 
 const Pesquisa = () => {
-
-    const [livrosPesquisados, setlivrosPesquisados] = useState([])
+  const [livrosPesquisados, setlivrosPesquisados] = useState([]);
 
   return (
     <PesquisaContainer>
       <Titulo>Já sabe por onde começar?</Titulo>
       <Subtitulo>Encontre seu livro em nossa estante.</Subtitulo>
-      <Input placeholder="Procure seu livro" onBlur={evento => setlivrosPesquisados(evento => {
-        const textoDigitado = evento.target.value
-        const resultadoPesquisa = livros.filter((livro => livro.nome.includes(textoDigitado)))
-        setlivrosPesquisados(resultadoPesquisa)
-      })}></Input>
+      <Input
+        placeholder="Procure seu livro"
+        onBlur={(evento) => {
+          const textoDigitado = evento.target.value;
+
+          if (textoDigitado === "") {
+            setlivrosPesquisados([]);
+            return;
+          }
+          const resultadoPesquisa = livros.filter((livro) =>
+            livro.nome.includes(textoDigitado)
+          );
+          setlivrosPesquisados(resultadoPesquisa);
+        }}
+      />
+
+      {livrosPesquisados.map((livro) => (
+        <div key={livro.id}>
+          <p>{livro.nome}</p>
+          <p>
+            <strong>Autor:</strong>
+            {livro.autor}
+          </p>
+          <p>
+            <strong>Categoria:</strong>
+            {livro.categoria}
+          </p>
+          <p>
+            <strong>Preço:</strong>
+            {livro.preco}
+          </p>
+          <img
+            src={livro.img}
+            alt={livro.nome}
+            style={{ width: "150px", height: "auto" }}
+          />
+        </div>
+      ))}
     </PesquisaContainer>
   );
 };
