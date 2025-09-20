@@ -25,6 +25,53 @@ const Subtitulo = styled.h3`
   margin-bottom: 40px;
 `;
 
+const LivroCard = styled.div`
+  background-color: #fdfdfd;
+  border: 1px solid #ddd;
+  border-radius: 12px;
+  padding: 16px;
+  margin: 12px;
+  width: 250px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  transition: transform 0.2s ease;
+
+  &:hover {
+    transform: scale(1.03);
+  }
+`;
+
+const LivroImagem = styled.img`
+  width: 100%;
+  height: auto;
+  border-radius: 8px;
+  margin-bottom: 12px;
+`;
+
+const LivroTitulo = styled.p`
+  font-size: 1.2rem;
+  font-weight: bold;
+  margin-bottom: 8px;
+  color: #333;
+`;
+
+const LivroInfo = styled.p`
+  font-size: 0.95rem;
+  margin: 4px 0;
+  color: #555;
+
+  strong {
+    color: #222;
+  }
+`;
+
+const LivrosContainer = styled.div`
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 20px;
+  padding: 20px;
+`;
+
 const Pesquisa = () => {
   const [livrosPesquisados, setlivrosPesquisados] = useState([]);
 
@@ -34,42 +81,44 @@ const Pesquisa = () => {
       <Subtitulo>Encontre seu livro em nossa estante.</Subtitulo>
       <Input
         placeholder="Procure seu livro"
-        onBlur={(evento) => {
+        onChange={(evento) => {
           const textoDigitado = evento.target.value;
 
           if (textoDigitado === "") {
             setlivrosPesquisados([]);
             return;
           }
-          const resultadoPesquisa = livros.filter((livro) =>
-            livro.nome.toLowerCase().includes(evento.target.value.toLowerCase())
-          );
+          const resultadoPesquisa = livros
+            .filter((livro) =>
+              livro.nome
+                .toLowerCase()
+                .includes(evento.target.value.toLowerCase())
+            )
+            .filter(
+              (livro, index, self) =>
+                index === self.findIndex((l) => l.id === livro.id)
+            );
           setlivrosPesquisados(resultadoPesquisa);
         }}
       />
 
-      {livrosPesquisados.map((livro) => (
-        <div key={livro.id}>
-          <p>{livro.nome}</p>
-          <p>
-            <strong>Autor:</strong>
-            {livro.autor}
-          </p>
-          <p>
-            <strong>Categoria:</strong>
-            {livro.categoria}
-          </p>
-          <p>
-            <strong>Preço:</strong>
-            {livro.preco}
-          </p>
-          <img
-            src={livro.img}
-            alt={livro.nome}
-            style={{ width: "150px", height: "auto" }}
-          />
-        </div>
-      ))}
+      <LivrosContainer>
+        {livrosPesquisados.map((livro) => (
+          <LivroCard key={livro.id}>
+            <LivroImagem src={livro.img} alt={livro.nome} />
+            <LivroTitulo>{livro.nome}</LivroTitulo>
+            <LivroInfo>
+              <strong>Autor:</strong> {livro.autor}
+            </LivroInfo>
+            <LivroInfo>
+              <strong>Categoria:</strong> {livro.categoria}
+            </LivroInfo>
+            <LivroInfo>
+              <strong>Preço:</strong> R$ {livro.preco}
+            </LivroInfo>
+          </LivroCard>
+        ))}
+      </LivrosContainer>
     </PesquisaContainer>
   );
 };
