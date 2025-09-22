@@ -1,0 +1,42 @@
+export const livros = [
+  {
+    nome: "A Garota no Trem",
+    id: 8,
+    autor: "Paula Hawkins",
+    categoria: "Suspense",
+    preco: 27.9,
+    img: "https://m.media-amazon.com/images/I/A1ajQ9OHOIL._UF1000,1000_QL80_.jpg",
+  },
+  {
+    nome: "O Pintassilgo",
+    id: 9,
+    autor: "Donna Tartt",
+    categoria: "Romance psicológico",
+    preco: 39.9,
+    img: "https://m.media-amazon.com/images/S/pv-target-images/a7fb4de0db64186ab5a9ff1930a12ee79b8e46902844b6858973bda2db57d5c7.jpg",
+  },
+  {
+    nome: "O Homem de Giz",
+    id: 10,
+    autor: "C.J. Tudor",
+    categoria: "Suspense / Thriller",
+    preco: 34.9,
+    img: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ_Y1d9XAhXfwuoELqTISMrA0MNXR0Xz9AY4w&s",
+  },
+  {
+    nome: "Cem Anos de Solidão",
+    id: 11,
+    autor: "Gabriel García Márquez",
+    categoria: "Realismo mágico",
+    preco: 44.9,
+    img: "https://m.media-amazon.com/images/I/816Yy5v+S5L._UF1000,1000_QL80_.jpg",
+  },
+  {
+    nome: "O Circo da Noite",
+    id: 12,
+    autor: "Erin Morgenstern",
+    categoria: "Fantasia / Romance",
+    preco: 38.0,
+    img: "https://m.media-amazon.com/images/I/81t2CVWEsUL._SY466_.jpg",
+  },
+];
