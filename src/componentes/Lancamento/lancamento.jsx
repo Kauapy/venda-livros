@@ -1,6 +1,7 @@
 import React from "react";
 import styled from "styled-components";
 import { livros } from "./dadosLancamentos.jsx";
+import { Titulo } from "../Titulo/titulo";
 
 const Section = styled.section`
   display: flex;
@@ -23,19 +24,10 @@ const LivroImg = styled.img`
   }
 `;
 
-const Titulo = styled.h2`
-  width: 100%;
-  text-align: center;
-  color: white;
-  letter-spacing: 1.4px;
-  color: #222;
-
-`
-
 const Lancamento = () => {
   return (
     <Section>
-      <Titulo>ÚLTIMOS LANÇAMENTOS</Titulo>
+      <Titulo>🕮 ÚLTIMOS LANÇAMENTOS</Titulo>
       {livros.map((livro) => (
         <LivroImg key={livro.id} src={livro.img} alt={livro.nome} />
       ))}
