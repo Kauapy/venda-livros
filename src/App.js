@@ -24,8 +24,8 @@ function App() {
       <AppHeader>
         <Header />
       </AppHeader>
-      <Lancamento/>
       <Pesquisa/>
+      <Lancamento/>
     </AppContainer>
   );
 }

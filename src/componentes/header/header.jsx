@@ -16,6 +16,7 @@ const Icone = styled.li`
 const Icones = styled.ul`
   display: flex;
   align-items: center;
+  font-weight: 600;
 `
 
 const OpcaoAtivo = styled.li`
