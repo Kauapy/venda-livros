@@ -1,8 +1,17 @@
 const { Router } = require ("express")
+const { getLivros } = require("../controladores/app")
 const router = Router()
 
-router.get("/", (req, res) => {
-    res.send("Salve js")
+router.get("/", getLivros)
+
+router.post('/', (req, res) => {
+
+})
+router.patch('/', (req, res) => {
+    
+})
+router.delete('/', (req, res) => {
+    
 })
 
 module.exports = router;
