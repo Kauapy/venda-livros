@@ -14,7 +14,8 @@ function getLivrosId(req, res){
     try{
         const id = req.params.id
         const livro = getLivroPorId(id)
-        res.send(livro)
+        if(!livro) return res.status(404).json({error: "Livro não encontrado"})
+        res.json(livro)
     } catch (error){
         res.status(500).send({message: "Erro no servidor"})
     }

@@ -6,7 +6,7 @@ function getTodosLivros(req, res){
 
 function getLivroPorId(id){
     const livros = JSON.parse(fs.readFileSync("livros.json"))
-    const livroFiltrado = livros.filter( livro => livro.id === id )[0]
+    const livroFiltrado = livros.filter( livro => livro.id === Number(id))
     return livroFiltrado
 }
 
