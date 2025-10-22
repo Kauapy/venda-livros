@@ -2,6 +2,7 @@ const express = require("express")
 const app = express()
 const rotaLivro = require("./rotas/livros")
 const port = 5000
+app.use(express.json())
 
 app.use("/livros", rotaLivro)
 

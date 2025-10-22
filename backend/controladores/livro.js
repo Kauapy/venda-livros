@@ -1,4 +1,4 @@
-const { getTodosLivros, getLivroPorId } = require("../servicos/livro")
+const { getTodosLivros, getLivroPorId, postLivros } = require("../servicos/livro")
 
 function getLivros(req, res){
     try{
@@ -23,7 +23,9 @@ function getLivrosId(req, res){
 
 function postLivros(req, res){
     try{
-        const novoLivro = req.body
+        const livroNovo = req.body
+        inserirLivro(livroNovo)
+        if(!livroNovo) return res.status(400).json({error: "Dados inválidos"})
         res.send(novoLivro)
     } catch (error){
         res.status(500).send({message: "Erro no servidor"})
@@ -32,7 +34,7 @@ function postLivros(req, res){
 
 module.exports = {
     getLivros,
-    postLivros,
-    getLivrosId
+    getLivrosId,
+    postLivros
 }
 
