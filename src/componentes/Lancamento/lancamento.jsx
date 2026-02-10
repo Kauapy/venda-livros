@@ -1,4 +1,3 @@
-import React from "react";
 import styled from "styled-components";
 import { livros } from "./dadosLancamentos.jsx";
 import { Titulo } from "../Titulo/titulo";

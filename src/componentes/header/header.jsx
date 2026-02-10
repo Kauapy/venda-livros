@@ -1,4 +1,3 @@
-import React from "react";
 import "./header.css";
 import logo from "../../imgs/logo.svg";
 import perfil from "../../imgs/perfil.svg";
@@ -57,7 +56,7 @@ function header() {
           {icones.map((icone) => {
             return (
               <Icone>
-                <img src={icone}></img>
+                <img src={icone} alt="icone"></img>
               </Icone>
             );
           })}
