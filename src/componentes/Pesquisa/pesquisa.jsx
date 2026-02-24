@@ -81,22 +81,22 @@ const Pesquisa = () => {
       <Input
         placeholder="Procure seu livro"
         onChange={(evento) => {
-          const textoDigitado = evento.target.value;
+          const textoDigitado = evento.target.value.toLowerCase();
 
           if (textoDigitado === "") {
             setlivrosPesquisados([]);
             return;
           }
+
           const resultadoPesquisa = livros
-            .filter((livro) =>
-              livro.nome
-                .toLowerCase()
-                .includes(evento.target.value.toLowerCase())
+            .filter(
+              (livro) => livro.nome.toLowerCase().startsWith(textoDigitado[0]), 
             )
             .filter(
               (livro, index, self) =>
-                index === self.findIndex((l) => l.id === livro.id)
+                index === self.findIndex((l) => l.id === livro.id),
             );
+
           setlivrosPesquisados(resultadoPesquisa);
         }}
       />

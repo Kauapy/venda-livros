@@ -1,9 +1,14 @@
+import styled from 'styled-components';
+import Header from './componentes/header/header';
 import { BrowserRouter, Routes, Route } from 'react-router-dom'
 import React from 'react';
 import ReactDOM from 'react-dom/client';
-import App from './App';
+import Home from './rotas/home';
 import reportWebVitals from './reportWebVitals';
+import Favoritos from './rotas/Favoritos';
 const { createGlobalStyle } = require('styled-components');
+
+
 
 const GlobalStyle = createGlobalStyle`
 body {
@@ -26,14 +31,26 @@ li{
 
 `
 
+const AppHeader = styled.header`
+  background-color: #ffffff;
+  padding: 20px;
+  border-radius: 3px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+`;
+
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
     <GlobalStyle />
     <BrowserRouter>
+    <AppHeader>
+        <Header />
+      </AppHeader>
       <Routes>
-        <Route path="/favoritos" element={<p>Oi</p>} />
-        <Route path="/" element={<App />} />
+        <Route path="/favoritos" element={<Favoritos />} />
+        <Route path="/" element={<Home />} />
       </Routes>
     </BrowserRouter>
   </React.StrictMode>
