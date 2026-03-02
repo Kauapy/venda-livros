@@ -1,7 +1,9 @@
 import Input from "../Input/input";
 import styled from "styled-components";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { livros } from "./dadosPesquisa.jsx";
+import { getLivros } from "../servicos/livros.js";
+import { Await } from "react-router-dom";
 
 const PesquisaContainer = styled.div`
   color: #fff;
@@ -73,6 +75,16 @@ const LivrosContainer = styled.div`
 
 const Pesquisa = () => {
   const [livrosPesquisados, setlivrosPesquisados] = useState([]);
+  const [livros, setLivros] = useState([]);
+
+  useEffect(() => {
+    fetchLivros();
+  }, []);
+
+  async function fetchLivros() {
+    const livrosDaApi = await getLivros();
+    setLivros(livrosDaApi);
+  }
 
   return (
     <PesquisaContainer>
@@ -88,9 +100,9 @@ const Pesquisa = () => {
             return;
           }
 
-          const resultadoPesquisa = livros
-            .filter(
-              (livro) => livro.nome.toLowerCase().startsWith(textoDigitado[0]), 
+          const resultadoPesquisa = (livros || [])
+            .filter((livro) =>
+              livro.nome.toLowerCase().startsWith(textoDigitado),
             )
             .filter(
               (livro, index, self) =>
