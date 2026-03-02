@@ -1,11 +1,11 @@
 import axios from 'axios';
 
 const livrosAPI = axios.create({
-    baseURL: 'http://localhost:5000/livros'
+    baseURL: 'http://localhost:5000'
 })
 
 async function getLivros(){
-    const resposta = await livrosAPI.get('/');
+    const resposta = await livrosAPI.get('/livros');
 
     return resposta.data
 }

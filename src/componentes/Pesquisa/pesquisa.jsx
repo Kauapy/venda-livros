@@ -83,7 +83,9 @@ const Pesquisa = () => {
 
   async function fetchLivros() {
     const livrosDaApi = await getLivros();
+    console.log("LIVROS DA API:", livrosDaApi);
     setLivros(livrosDaApi);
+    return []
   }
 
   return (
